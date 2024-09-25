@@ -66,7 +66,7 @@ function obtervaloresFormulario() {
         return formValues;  
 }
 
-
+// Funcao que acessa a API para obter o plano de corte.
 function gerarPlanoCorte(formulario){
 // Exemplo de POST request
 fetch('https://localhost:7001/api/Armario/CalcularPlanoArmario', {
@@ -95,10 +95,29 @@ fetch('https://localhost:7001/api/Armario/CalcularPlanoArmario', {
 .then(response => response.json())
 .then(data => {
     console.log('Sucesso:', data);
+
+
+    apresentarResultado(data);
 })
 .catch(error => {
     console.error('Erro:', error);
 });
+}
+
+function apresentarResultado(planoCorte){
+    let resultado = document.getElementById("resultado");
 
 
+    for (let grupo in planoCorte) {
+        
+        resultado.innerHTML += "<h2>" + grupo +"</h2>";
+         
+        for (let atributo in planoCorte[grupo]){
+            resultado.innerHTML += "<h5>" + atributo+ ":     " +  planoCorte[grupo][atributo] +"</h5>";
+            
+         }
+ 
+ 
+    }
+    
 }
