@@ -21,7 +21,7 @@
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">INFORMAÇÕES NECESSÁRIAS</h4>
                     
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" method="post" id="formulario-plano">
                         
                         <div class="row g-3">
                             <div class="col-12">
@@ -149,8 +149,8 @@
 
                         </div>
                         <hr class="my-4">
-
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Gerar Plano de Corte</button>
+                        
+                        <button class="w-100 btn btn-primary btn-lg" onclick="obtervaloresFormulario()"> Gerar Plano de Corte</button>
                     </form>
                 </div>
             </div> 
@@ -162,6 +162,6 @@
     </div>
     
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/checkout.js"></script></body>
-
-    </html>
+   <script src="js/scripts.js"></script>
+</body>  
+</html>
