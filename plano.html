@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-br" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marcenaria Exclusive</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/template.css'>
+</head>
+
+<main>
+    <div class="container-formulario">
+        <div class="col-md-7 col-lg-8">
+            <div class="mb-3">
+
+                <div id="mensagens-erro" role="alert"></div>
+                <h4>PLANO DE CORTE</h4>
+
+                <form class="needs-validation" method="post" id="formulario-plano" novalidate>
+
+                    <div class="row g-3 ">
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email <span
+                                    class="text-body-secondary">(Optional)</span></label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="you@example.com">
+                            <div class="invalid-feedback">
+                                Informe um e-mail válido.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="projeto" class="form-label">Nome do Projeto</label>
+                            <input type="text" class="form-control" id="projeto" name="projeto"
+                                placeholder="Nome do Projeto" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do projeto.
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <h4 class="mb-3">Tipo de Movel</h4>
+
+                    <div class="my-3">
+
+                        <div class="form-check">
+                            <input id="armario" name="tipo-movel" id="tipo-movel" value="1" type="radio"
+                                class="form-check-input" checked required>
+                            <label class="form-check-label" for="armario">Armario</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="nicho" name="tipo-movel" value="2" type="radio" class="form-check-input"
+                                required>
+                            <label class="form-check-label" for="nicho">Nicho</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="comoda" name="tipo-movel" value="3" type="radio" class="form-check-input"
+                                required>
+                            <label class="form-check-label" for="comoda">Comoda</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="gaveteiro" name="tipo-movel" value="4" type="radio" class="form-check-input"
+                                required>
+                            <label class="form-check-label" for="gaveteiro">Gaveteiro</label>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <h4 class="mb-3">Dimensões</h4>
+
+                    <div class="row g-3">
+
+                        <div class="col-sm-4">
+                            <label for="altura" class="form-label">Altura</label>
+                            <input type="number" class="form-control" id="altura" name="altura"
+                                placeholder="em centimetros" min="50" max="200" step="1" required>
+                            <div class="invalid-feedback">Informe um valor entre 50 e 200.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="largura" class="form-label">Largura</label>
+                            <input type="number" class="form-control" id="largura" name="largura"
+                                placeholder="em centimetros" min="40" max="150" step="1" required>
+                            <div class="invalid-feedback">Informe um valor entre 40 e 150.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="profundidade" class="form-label">profundidade</label>
+                            <input type="number" class="form-control" id="profundidade" name="profundidade"
+                                placeholder="em centimetros" min="40" max="60" step="1" required>
+                            <div class="invalid-feedback">Informe um valor entre 40 e 60.</div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="mb-3">Caracteristicas Internas</h4>
+
+                        <div class="col-sm-4">
+                            <label for="prateleiras" class="form-label">Quantidade de Prateleiras</label>
+                            <input type="number" class="form-control" id="prateleiras" name="prateleiras" min="0"
+                                max="10" step="1" required>
+                            <div class="invalid-feedback">Informe um valor entre 0 e 10.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="divisoes" class="form-label">Quantidade de Divisões Internas</label>
+                            <input type="number" class="form-control" id="divisoes" name="divisoes" min="0" max="2"
+                                step="1" required>
+                            <div class="invalid-feedback">Informe um valor entre 0 e 2.</div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="mb-3">Porta e Gavetas</h4>
+
+                        <div class="col-sm-4">
+                            <label for="proporcao-porta" class="form-label">Proporção Porta</label>
+                            <input type="number" class="form-control" id="proporcao-porta" name="proporcao-porta"
+                                min="0" max="1OO" step="1">
+                            <div class="invalid-feedback">Informe um valor entre 0 e 1OO.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="proporcao-gaveta" class="form-label">Proporção Gavetas</label>
+                            <input type="number" class="form-control" id="proporcao-gaveta" name="proporcao-gaveta"
+                                min="0" max="1OO" step="1">
+                            <div class="invalid-feedback">Informe um valor entre 0 e 1OO.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="portas" class="form-label">Quantidade de Portas</label>
+                            <input type="number" class="form-control" id="portas" name="portas" min="0" max="3"
+                                step="1">
+                            <div class="invalid-feedback">Informe um valor entre 0 e 3.</div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="gavetas" class="form-label">Quantidade de Gavetas</label>
+                            <input type="number" class="form-control" id="gavetas" name="gavetas" min="0" max="10"
+                                step="1">
+                            <div class="invalid-feedback">Informe um valor entre 0 e 1OO.</div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="mb-3">Acabamento</h4>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="acabamento-superior"
+                                name="acabamento-superior">
+                            <label class="form-check-label" for="acabamento-superior">Possui acabamento
+                                Superior?</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="acabamento-inferior"
+                                name="acabamento-inferior">
+                            <label class="form-check-label" for="acabamento-inferior">Possui acabamento
+                                Inferior?</label>
+                        </div>
+
+                    </div>
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit"> Gerar Plano de Corte</button>
+                </form>
+
+                <div class="album py-5 bg-body-tertiary">
+                    <div class="container">
+                       <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="plano-corte"></div> -->
+                    </div>
+                </div>
+                <div class="row mb-2" id="plano-corte">
+                    <div class="col-md-5">
+                      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+                          <h3 class="mb-0">Featured post</h3>
+                          <div class="mb-1 text-body-secondary">Nov 12</div>
+                          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            Continue reading
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                          </a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                          <h3 class="mb-0">Post title</h3>
+                          <div class="mb-1 text-body-secondary">Nov 11</div>
+                          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            Continue reading
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                          </a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                          <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                            <h3 class="mb-0">Post title</h3>
+                            <div class="mb-1 text-body-secondary">Nov 11</div>
+                            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                              Continue reading
+                              <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                            </a>
+                          </div>
+                          <div class="col-auto d-none d-lg-block">
+                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                          </div>
+                        </div>
+                      </div>
+                  </div>    
+            
+            
+            
+            </div>
+
+</main>
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

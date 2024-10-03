@@ -1,0 +1,101 @@
+/*ESTILOS PARA TODAS AS PAGINAS*/
+body, html {
+    height: 100%; /* Garante que o contêiner ocupe toda a tela */
+    margin: 0;
+    background-color: black;
+    background: radial-gradient(circle, #201f1f, #000000);
+
+}
+
+/* ESTILOS DA PAGINA INICIAL*/
+.container-home {
+    display: flex;
+    justify-content: left; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Altura total da viewport */
+}
+
+.titulo-inicial {
+    width: 800px;
+    height: 200px;
+    padding-left: 20px;
+  
+}
+
+.titulo-principal{
+    color: white;
+    font-size: 150px;
+    display: block;
+    
+}
+
+.titulo-secundario{
+    font-size: 90px;
+    color: rgb(255, 128, 0);
+    display: block;
+}
+
+.linha-inclinada-home {
+    width: 10px; /* Define a espessura da linha */
+    height: 100%; /* Define o comprimento da linha */
+    background-color: rgb(255, 128, 0); /* Cor da linha */
+    position: absolute; /* Permite ajustar a posição da linha */
+    
+    right: 45%; /* Posiciona horizontalmente */
+    transform: rotate(16deg); /* Inclina a linha em 45 graus */
+    
+}
+
+.imagem-home{
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    background-color: rgb(255, 128, 0);
+    float: right;
+    height: 100%;
+    width: 55%;
+    background-image: url('../img/home.jpg');
+    background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+
+}
+
+.button-link {
+    
+    display: block;
+    background-color: rgb(255, 128, 0);
+    color: white;
+    text-decoration: none;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: large;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-link:hover {
+    background-color: rgb(200, 100, 0);
+  }
+
+  /* ESTILOS DO FORMULARIO DE PLANO DE CORTE*/
+
+.container-formulario{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; /* Cor de fundo clara */
+
+}
+
+#formulario-plano{
+
+    max-width: 600px; /* Largura máxima do formulário */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #ddd; /* Borda suave */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    background-color: #fff; /* Cor de fundo */
+}
