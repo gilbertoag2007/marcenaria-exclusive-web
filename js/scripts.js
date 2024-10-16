@@ -43,6 +43,7 @@ function obtervaloresFormulario() {
 function gerarPlanoCorte() {
   const formulario = obtervaloresFormulario();
   enviarRequisicaoAPI(formulario);
+  baixarImagemProjetoCompleto(formulario);
 }
 
 
@@ -99,31 +100,34 @@ function apresentarPlanoCorte(planoCorte) {
   let nomeAtributo;
 
   for (let grupo in planoCorte) {
-    nomeGrupo = grupo;
+    nomeGrupo = grupo.charAt(0).toUpperCase() + grupo.slice(1);
     nomeAtributo = "";
 
     for (let atributo in planoCorte[grupo]) {
 
-      nomeAtributo += atributo + ": " + planoCorte[grupo][atributo] + "<br/>";
+      atributoFormatado= atributo.charAt(0).toUpperCase() + atributo.slice(1);
+      nomeAtributo += '<li>' + atributoFormatado + ": " + planoCorte[grupo][atributo] + '</li>';
 
     }
 
     if (nomeAtributo != null && nomeAtributo != "")
       
       resultado.innerHTML += '<div class="col-md-5">'
-                          +  '<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">'
+                          +  '<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">'
                           +  '<div class="col p-4 d-flex flex-column position-static">'
-                          +  '<strong class="d-inline-block mb-2 text-primary-emphasis">' + nomeGrupo + '</strong>'
-                          +  '<h3 class="mb-0">Featured post</h3>'
-                          +  '<div class="mb-1 text-body-secondary">Nov 12</div>'
+                          +  '<strong class="d-inline-block mb-2 text-primary-emphasis">' + nomeGrupo + ':</strong>'
+                   //       +  '<h3 class="mb-0">'+ nomeGrupo  +'</h3>'
+                          //+  '<div class="mb-1 text-body-secondary">Nov 12</div>'
+                          + '<ul>'
                           +  '<p class="card-text mb-auto">' + nomeAtributo + '</p>'
-                          +  '<a href="#" class="icon-link gap-1 icon-link-hover stretched-link">'
-                          +  'Continue reading'
-                          +  '<svg class="bi"><use xlink:href="#chevron-right"/></svg>'
-                          +  '</a>'
+                          + '</ul>'
+                          //+  '<a href="#" class="icon-link gap-1 icon-link-hover stretched-link">'
+                          //+  'Continue reading'
+                          //+  '<svg class="bi"><use xlink:href="#chevron-right"/></svg>'
+                          //+  '</a>'
                           +  '</div>'
                           +  '<div class="col-auto d-none d-lg-block">'
-                          +  '<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>'
+                          +  '<svg class="bd-placeholder-img" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>'
                           +  '</div>'
                           +  '</div>'
                           + '</div>';
@@ -175,3 +179,41 @@ function apresentarErro(erroRequisicao, tipoErro) {
     }, false);
   });
 })();
+
+
+
+async function baixarImagemProjetoCompleto(formulario) {
+
+
+  try {
+    
+     const response = await fetch('https://localhost:7001/api/ImagemPlano/GerarImagemPlanoCorte', {
+
+     method: 'POST', // ou 'POST', 'PUT', etc., conforme necessário
+     headers: { 'Content-Type': 'application/json' },
+
+     body: formulario
+    });
+
+
+      if (response.status===200) {
+          const blob = await response.blob();
+          const zip = await JSZip.loadAsync(blob);
+
+          // Itera pelos arquivos no ZIP
+          zip.forEach(async (relativePath, file) => {
+              if (file.name.endsWith(".jpg") || file.name.endsWith(".png")) {
+                  // Caso seja uma imagem, exibe na página
+                  const imageBlob = await file.async("blob");
+                  const imgElement = document.createElement("img");
+                  imgElement.src = URL.createObjectURL(imageBlob);
+                  
+                  document.getElementById("plano-corte").appendChild(imgElement);
+                 // document.body.appendChild(imgElement);
+              } 
+          });
+      }
+  } catch (error) {
+      console.error("Erro ao baixar ou extrair o ZIP com a imagem do projeto:", error);
+  }
+}
